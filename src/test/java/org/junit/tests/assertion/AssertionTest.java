@@ -12,10 +12,12 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertGreaterThan;
 
 import java.math.BigDecimal;
 
 import org.junit.Assert;
+import org.junit.Assert.IntegerComparator;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 import org.junit.internal.ArrayComparisonFailure;
@@ -648,17 +650,10 @@ public class AssertionTest {
     public void assertNotEqualsIgnoresFloatDeltaOnNaN() {
         assertNotEquals(Float.NaN, Float.NaN, 1f);
     }
-    public void testGreater() {
-        Object o = new Object();
-        assertEquals(o, o);
-        assertEquals("abcd", "abc");
-        assertEquals(true, true);
-        assertEquals((byte) 2, (byte) 1);
-        assertEquals('a', 'b');
-        assertEquals((short) 1, (short) 13);
-        assertEquals(1, 2); 
-        assertEquals(1l, 13l);
-        assertEquals(1.0, 2.0, 0.0);
-        assertEquals(1.70d, 1.0d, 0.0d);
+    public static void testGreater() {
+        Integer o1 = new Integer(3);
+        Integer o2 = new Integer(2);
+ //       Assert.IntegerComparator<Integer> comparator = new Assert.IntegerComparator<Integer>();
+ //       Assert.assertGreaterThan(o1, o2, comparator.compare(o1,o2));
     }
 }
