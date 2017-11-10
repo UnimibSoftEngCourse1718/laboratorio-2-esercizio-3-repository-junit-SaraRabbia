@@ -1,5 +1,7 @@
 package org.junit;
 
+import java.util.Comparator;
+
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.junit.function.ThrowingRunnable;
@@ -966,6 +968,7 @@ public class Assert {
         MatcherAssert.assertThat(reason, actual, matcher);
     }
 
+
     /**
      * Asserts that {@code runnable} throws an exception of type {@code expectedThrowable} when
      * executed. If it does not throw an exception, an {@link AssertionError} is thrown. If it
@@ -1021,5 +1024,29 @@ public class Assert {
         String message = String.format("expected %s to be thrown, but nothing was thrown",
                 formatClass(expectedThrowable));
         throw new AssertionError(message);
+    }
+
+    public static <T> void assertGreaterThan(Integer o1, Integer o2, Integer i){
+        
+        if (i.compare(o1, o2) < 0)
+            assertTrue(true);
+        else if (i.compare(o1,o2) > 0)
+            assertTrue(false);
+       
+     }
+    
+    public class IntegerComparator<T> implements Comparator{
+        public int compare(Object a1, Object b2){
+            Integer a = (Integer)a1;
+            Integer b = (Integer)b2;
+            if (a < b){
+                return -1;
+            }else if(a > b){
+                return 1;
+            }else{
+                return 0;
+            }
+        }  
+
     }
 }

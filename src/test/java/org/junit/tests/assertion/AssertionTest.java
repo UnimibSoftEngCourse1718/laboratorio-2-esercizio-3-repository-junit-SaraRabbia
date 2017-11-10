@@ -13,11 +13,13 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.expectThrows;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertGreaterThan;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
 import org.junit.Assert;
+import org.junit.Assert.IntegerComparator;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 import org.junit.function.ThrowingRunnable;
@@ -847,6 +849,7 @@ public class AssertionTest {
         assertNotEquals(Float.NaN, Float.NaN, 1f);
     }
 
+
     @Test(expected = AssertionError.class)
     public void expectThrowsRequiresAnExceptionToBeThrown() {
         expectThrows(Throwable.class, nonThrowingRunnable());
@@ -973,5 +976,12 @@ public class AssertionTest {
                 throw t;
             }
         };
+    }
+
+    public static void testGreater() {
+        Integer o1 = new Integer(3);
+        Integer o2 = new Integer(2);
+ //       Assert.IntegerComparator<Integer> comparator = new Assert.IntegerComparator<Integer>();
+ //       Assert.assertGreaterThan(o1, o2, comparator.compare(o1,o2));
     }
 }
